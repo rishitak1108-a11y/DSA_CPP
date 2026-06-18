@@ -1,4 +1,4 @@
-// Program to create a singly ll using vector
+// Program to find the length of a linked list 
 #include<iostream>
 #include<vector>
 using namespace std;
@@ -38,12 +38,38 @@ Node* convertArr2LL(vector<int> &arr)
     }
     return head;
 }
+
+int countLL(Node* head)
+{
+    int iCnt = 0;
+    Node* temp = head;
+    while(temp != NULL)
+    {
+        iCnt++;
+        temp = temp->next;
+    }
+    return iCnt;
+}
+
+void print(Node* head)
+{
+    while(head != NULL)
+    {
+        cout<<head->data<<"->";
+        head = head->next;
+    }
+    cout<<"NULL"<<endl;
+}
 int main()
 {
-    vector<int> arr = {2, 5, 8, 7};
+    int iRet = 0;
+    vector<int> arr = {12, 5, 8, 7};
     Node* pRet = new Node();
     pRet = convertArr2LL(arr);
-    cout<<pRet->data<<endl;
+    print(pRet);
+    iRet = countLL(pRet);
+    cout<<iRet<<endl;
+
     delete pRet;
     return 0;
 }
